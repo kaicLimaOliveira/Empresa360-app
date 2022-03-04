@@ -2,11 +2,11 @@
   <div>
     <nav class="navbar navbar-light bg-light menu-superior">
       <div class="container">
-        <RouterLink class="navbar-brand" to="/home">Empresa 360</RouterLink>
+        <RouterLink class="navbar-brand" :to="{ name: 'Home' }">Empresa 360</RouterLink>
         <div class="navbar-nav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">Sair</a>
+              <RouterLink class="nav-link" :to="{ name: 'Login' }">Sair</RouterLink>
             </li>
           </ul>
         </div>
@@ -15,13 +15,18 @@
 
     <div class="d-flex">
       <div class="list-group menu-esquerda">
-        <RouterLink class="list-group-item list-group-item-action" to="/home/dashboard" active-class="ativo" exact-active-class="active">
+        <RouterLink 
+          class="list-group-item list-group-item-action" 
+          :to="{ name: 'Dashboard' }" 
+          active-class="ativo" 
+          exact-active-class="active"
+        >
           <i class="bi bi-speedometer2"></i> Dashboard
         </RouterLink>
 
         <RouterLink
           class="list-group-item list-group-item-action"
-          to="/home/vendas"
+          :to="{ name: 'Vendas' }"
           active-class="ativo"
           exact-active-class="active"
         >
@@ -30,7 +35,7 @@
 
         <RouterLink
           class="list-group-item list-group-item-action"
-          to="/home/vendas/leads"
+          :to="{ name: 'Leads' }"
           active-class="ativo"
           exact-active-class="active"
         >
@@ -39,7 +44,7 @@
 
         <RouterLink
           class="list-group-item list-group-item-action"
-          to="/home/vendas/contratos"
+          :to="{ name: 'Contratos' }"
           active-class="ativo"
           exact-active-class="active"
         >
@@ -48,7 +53,7 @@
 
         <RouterLink
           class="list-group-item list-group-item-action"
-          to="/home/servicos"
+          :to="{ name: 'Servicos' }"
           active-class="ativo"
           exact-active-class="active"
         >
@@ -69,6 +74,10 @@
           <RouterView />
         </div>
       </div>
+    </div>
+
+    <div class="rodape">
+      <RouterView name="rodape" />
     </div>
   </div>
 </template>
@@ -107,5 +116,12 @@
   border-color: #65a1fa;
 }
 
+.rodape {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ccc;
+}
 
 </style>
