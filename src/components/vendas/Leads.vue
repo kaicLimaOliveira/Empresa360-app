@@ -1,36 +1,27 @@
 <template>
   <h1>Leads</h1>
-  <p>{{ data }}</p>
+  <p>{{ dados }}</p>
 </template>
 
 <script>
 export default {
   name: "Leads",
   data: () => ({
-    data: ''
+    dados: "",
   }),
   methods: {
-    getRequestLeads() {
-      const getRequest = async () => {
-        const response = await fetch('http://localhost:3000/leads', {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        }).catch(e => console.log(e))
+    getDadosApi() {
+      const getJSON = async () => {
+        const response = await fetch("http://localhost:3000/leads");
 
-        console.log(await response);
-        const res = await response.json()
-        this.data = await response.json()
-        console.log(res);
-      }
+        this.dados = await response.json();
+      };
 
-      getRequest()
+      getJSON();
     },
-    created() {
-      this.getRequestLeads()
-    }
-  }
+  },
+  created() {
+    this.getDadosApi();
+  },
 };
 </script>
