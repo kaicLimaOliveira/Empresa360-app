@@ -3,7 +3,6 @@
     <h1>Leads</h1>
 
     <table class="table">
-      
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -22,8 +21,14 @@
             <!-- <RouterLink :to="`/home/vendas/leads/${dado.id}`" class="btn btn-sm btn-primary">
             </RouterLink> -->
 
-            <RouterLink :to="{ name: 'Lead', params: { id: dado.id } }" class="btn btn-sm btn-primary"> 
-              <i class="bi bi-pencil-square" style="cursor: pointer;"></i>
+            <RouterLink
+              :to="{
+                name: 'Lead',
+                params: { id: dado.id, outroParametro: `teste_id ${dado.id}}` },
+              }"
+              class="btn btn-sm btn-primary"
+            >
+              <i class="bi bi-pencil-square" style="cursor: pointer"></i>
             </RouterLink>
           </td>
         </tr>
@@ -33,12 +38,18 @@
 </template>
 
 <script>
-import ApiMixin from '@/mixins/ApiMixin'
+import ApiMixin from "@/mixins/ApiMixin";
 export default {
   name: "Leads",
   mixins: [ApiMixin],
   created() {
     this.getDataApi("http://localhost:3000/leads");
+  },
+  beforeRouteEnter() {
+    console.log("Guarda de componente beforeRouteEnter");
+  },
+  beforeRouteLeave() {
+    console.log("Guarda de componente beforeRouteLeave");
   },
 };
 </script>

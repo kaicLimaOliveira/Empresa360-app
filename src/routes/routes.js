@@ -19,52 +19,86 @@ import VendasPadrao from '@/components/vendas/VendasPadrao.vue'
 const routes = [
     {
         path: '/',
-        component: Site
+        component: Site,
+        meta: { requerAutorizacao: false }
     },
     {
         path: '/home',
         component: Home,
         name: 'Home',
+        meta: { requerAutorizacao: true },
+        alias: '/app',
         children: [
             {
                 path: 'vendas', component: Vendas, children:
                     [
-                        { path: 'leads', component: Leads, name: 'Leads' },
-                        { path: 'leads/:id', component: Lead, name: 'Lead' },
+                        {
+                            path: 'leads',
+                            component: Leads,
+                            name: 'Leads',
+                            beforeEnter() {
+                                console.log('Guarda de rota beforeEnter');
+                            }
+                        },
+                        {
+                            path: 'leads/:id/:outroParametro',
+                            props: true,
+                            component: Lead,
+                            name: 'Lead',
+                            alias: [
+                                '/l/:id/:outroParametro',
+                                '/pessoa/:id/:outroParametro',
+                                '/:id/:outroParametro'
+                            ]
+                        },
                         { path: 'contratos', component: Contratos, name: 'Contratos' },
                         { path: '', component: VendasPadrao, name: 'Vendas', },
                     ],
             },
-            { path: 'servicos', component: Servicos, name: 'Servicos', children: 
-                [
-                    { path:':id', name: 'Servico', components:  
+            {
+                path: 'servicos', component: Servicos, name: 'Servicos', children:
+                    [
                         {
-                            default: Servico,
-                            opcoes: Opcoes,
-                            indicadores: Indicadores,
-                        } 
-                    },
-                ], 
+                            path: ':id',
+                            props: {
+                                default: true,
+                                indicadores: true,
+                                opcoes: true
+                            },
+                            alias: '/s/:id',
+                            name: 'Servico',
+                            components:
+                            {
+                                default: Servico,
+                                indicadores: Indicadores,
+                                opcoes: Opcoes,
+                            }
+                        },
+                    ],
             },
-            { path: 'dashboard', components: {
-                default: Dashboard,
-                rodape: DashboardFooter
-            }, name: 'Dashboard'},
+            {
+                path: 'dashboard', components: {
+                    default: Dashboard,
+                    rodape: DashboardFooter
+                }, name: 'Dashboard'
+            },
         ]
     },
     {
         path: '/login',
         component: Login,
+        meta: { requerAutorizacao: false },
         name: 'Login'
     },
     { path: '/redirecionamento-1', redirect: { name: 'Servicos' } },
     { path: '/redirecionamento-2', redirect: { name: 'Leads' } },
     { path: '/redirecionamento-3', redirect: { name: 'Vendas' } },
-    { path: '/redirecionamento-4', redirect: to => {
+    {
+        path: '/redirecionamento-4', redirect: to => {
             console.log(to);
 
             return { name: 'Vendas' }
-        } 
+        }
     },
     // route catch all
     // { path: '/:catchAll(.*)*', redirect: '/'}
@@ -73,5 +107,21 @@ const routes = [
 
 export const router = createRouter({
     history: createWebHistory(),
+    // scrollBehavior() {
+    //     return { left: 0, top: 150 }
+    // },
     routes
 })
+
+// router.beforeResolve(() => {
+//     console.log('Guarda global beforeResolve');
+// })
+
+// router.beforeEach(() => {
+//     console.log('Guarda global beforeEach');
+// })
+
+// router.afterEach(() => {
+//     console.log('Guarda global afterEach');
+// })
+
