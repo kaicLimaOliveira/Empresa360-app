@@ -1,30 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Contratos from '@/components/vendas/Contratos.vue'
-import Dashboard from '@/components/dashboard/Dashboard.vue'
-import DashboardFooter from '@/components/dashboard/DashboardFooter.vue'
-import Home from '@/components/views/Home.vue'
+const Contratos = () => import(/* webpackChunkName: "vendas" */ '@/components/vendas/Contratos.vue')
+const Dashboard = () => import('@/components/dashboard/Dashboard.vue')
+const DashboardFooter = () => import('@/components/dashboard/DashboardFooter.vue')
 import Indicadores from '@/components/servicos/Indicadores.vue'
-import Lead from '@/components/vendas/Lead.vue'
-import Leads from '@/components/vendas/Leads.vue'
+const Lead = () => import(/* webpackChunkName: "vendas" */ '@/components/vendas/Lead.vue')
+const Leads = () => import(/* webpackChunkName: "vendas" */ '@/components/vendas/Leads.vue')
 import Login from '@/components/views/Login.vue'
 import Opcoes from '@/components/servicos/Opcoes.vue'
 import PageNotFound from '@/components/views/PageNotFound.vue'
 import Servico from '@/components/servicos/Servico.vue'
 import Servicos from '@/components/servicos/Servicos.vue'
-import Site from '@/components/views/Site.vue'
-import Vendas from '@/components/vendas/Vendas.vue'
-import VendasPadrao from '@/components/vendas/VendasPadrao.vue'
+const Vendas = () => import(/* webpackChunkName: "vendas" */ '@/components/vendas/Vendas.vue')
+const VendasPadrao = () => import(/* webpackChunkName: "vendas" */ '@/components/vendas/VendasPadrao.vue')
 
 const routes = [
     {
         path: '/',
-        component: Site,
+        component: () => import('@/components/views/Site.vue'),
         meta: { requerAutorizacao: false }
     },
     {
         path: '/home',
-        component: Home,
+        component: () => import('@/components/views/Home.vue'),
         name: 'Home',
         meta: { requerAutorizacao: true },
         alias: '/app',
@@ -107,9 +105,14 @@ const routes = [
 
 export const router = createRouter({
     history: createWebHistory(),
-    // scrollBehavior() {
-    //     return { left: 0, top: 150 }
-    // },
+    scrollBehavior(to, from, savedPosition) {
+        console.log(savedPosition);
+
+        if(savedPosition) return savedPosition
+        if(to.hash) return{ el: to.hash }
+        
+        return { left: 0, top: 0 }
+    },
     routes
 })
 

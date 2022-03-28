@@ -6,16 +6,16 @@
             
                 <ul class="navbar-nav links">
                     <li class="nav-item"> 
-                        <router-link class="nav-link" to="/">Seção 1</router-link>
+                        <RouterLink class="nav-link" to="#section_1">Seção 1</RouterLink>
                     </li>
                     <li class="nav-item"> 
-                        <router-link class="nav-link" to="/">Seção 2</router-link>
+                        <RouterLink class="nav-link" to="#section_2">Seção 2</RouterLink>
                     </li>
                     <li class="nav-item"> 
-                        <router-link class="nav-link" to="/">Seção 3</router-link>
+                        <RouterLink class="nav-link" to="#section_3">Seção 3</RouterLink>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/login">Acessar</router-link>
+                        <RouterLink class="nav-link" to="/login">Acessar</RouterLink>
                     </li>
                 </ul>
             </div>
@@ -46,23 +46,37 @@
 
             <div class="row mt-5 p-5 bg-light">
                 <div class="col">
-                    <h3>Seção 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas posuere luctus elit, et blandit neque pulvinar a. Nunc id consectetur ipsum. Sed dignissim turpis quis fringilla pretium. Sed bibendum faucibus ex, tincidunt aliquet mauris commodo accumsan. Vivamus commodo risus quis euismod tempus. Donec non hendrerit quam. Vivamus laoreet lacus sed neque tristique pulvinar. Vestibulum in maximus dolor. Mauris efficitur libero quis placerat placerat.</p>
-                    <p>Proin sollicitudin orci ligula, ac bibendum ante porttitor ac. Mauris a sem id augue blandit dapibus. Fusce facilisis mi et velit porttitor suscipit. Praesent ut nunc ullamcorper, pretium augue vitae, bibendum ligula. Duis ut augue lobortis, congue erat et, placerat nisl. Nam sed lobortis leo. Pellentesque gravida hendrerit urna, vitae ullamcorper ante pharetra eget. Integer consectetur laoreet ultricies. Nunc vestibulum pulvinar sodales.</p>
+                    <h2 id="section_1">Seção 1</h2>
+                    <h3>Sintaxe de rota expressiva</h3>
+                    <p>Defina rotas estáticas e dinâmicas com uma sintaxe intuitiva e poderosa.</p>
+                    <br />
+
+                    <h3>Controle de navegação refinado</h3>
+                    <p>Intercepte qualquer navegação e controle com precisão seu resultado.</p>
                 </div>
             </div>
 
             <div class="row mt-5 p-5">
                 <div class="col">
-                    <h3>Seção 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas posuere luctus elit, et blandit neque pulvinar a. Nunc id consectetur ipsum. Sed dignissim turpis quis fringilla pretium. Sed bibendum faucibus ex, tincidunt aliquet mauris commodo accumsan. Vivamus commodo risus quis euismod tempus. Donec non hendrerit quam. Vivamus laoreet lacus sed neque tristique pulvinar. Vestibulum in maximus dolor. Mauris efficitur libero quis placerat placerat.</p>
+                    <h2 id="section_2">Seção 2</h2>
+                    <h3>Configuração baseada em componentes</h3>
+                    <p>Mapeie cada rota para o componente que deve ser exibido.</p>
+                    <br />
+
+                    <h3>Modos de história</h3>
+                    <p>Escolha entre os modos de histórico HTML5, Hash ou Memory.</p>
                 </div>
             </div>
 
             <div class="row mt-5 p-5 bg-light">
                 <div class="col">
-                    <h3>Seção 3</h3>
-                    <p>Proin sollicitudin orci ligula, ac bibendum ante porttitor ac. Mauris a sem id augue blandit dapibus. Fusce facilisis mi et velit porttitor suscipit. Praesent ut nunc ullamcorper, pretium augue vitae, bibendum ligula. Duis ut augue lobortis, congue erat et, placerat nisl. Nam sed lobortis leo. Pellentesque gravida hendrerit urna, vitae ullamcorper ante pharetra eget. Integer consectetur laoreet ultricies. Nunc vestibulum pulvinar sodales.</p>
+                    <h2 id="section_3">Seção 3</h2>
+                    <h3>Controle de rolagem</h3>
+                    <p>Controle com precisão a posição de rolagem em cada página.</p>
+                    <br />
+
+                    <h3>Codificação Automática</h3>
+                    <p>Use diretamente caracteres unicode (你好) em seu código.</p>
                 </div>
             </div>
         </div>
